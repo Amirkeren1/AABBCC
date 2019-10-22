@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form name="CarConfigurator">
+        <select name="Car_make">
+            <option value="" selected="selected">None</option>
+            <option value="1">Audi RS6</option>
+            <option value="2">BMW M4</option>
+            <option value="3">Mercedes C63 AMG</option>
+        </select>
+        <br>    
+        <br>
+
+        <select name="A_M">
+            <option value="0" selected="selected">None</option>
+            <option value="1">Automatic</option>
+            <option value="2">Manual</option>
+
+        </select>
+
+    </form>
+
+    <br>
+    <br>
+
+    <img id="carImage" style="width:500px">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+        function transmission(car, option) {
+
+            if (car == "1" && option == "1") { // Audi RS6 | Automatic
+                $("#carImage").attr('src', "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Audi_RS6_-_Mondial_de_l'Automobile_de_Paris_2014_-_001.jpg/280px-Audi_RS6_-_Mondial_de_l'Automobile_de_Paris_2014_-_001.jpg");
+
+            } else if (car == "2" && option == "2") { // BMW M4 | Manual
+                $("#carImage").attr('src', "http://buyersguide.caranddriver.com/media/assets/submodel/7774.jpg");
+
+            } else if (car == "3" && option == "1") { // Mercedes C63 AMG | Automatic
+                $("#carImage").attr('src', "http://images.cdn.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/mercedes-benz-c63-amg-1.jpg?itok=yHBoS8gg");
+
+            } else {
+                $("#carImage").attr('src', "");
+
+            }
+
+        }
+
+        $("select").on("change", function () {
+            var selectCar = $("select[name=Car_make]");
+            var selectCarOption = $("select[name=A_M]");
+            transmission(selectCar.val(), selectCarOption.val());
+        });
+
+    </script>
+</body>
+</html>
